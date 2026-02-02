@@ -23,6 +23,19 @@
       --mikey: #ff9f1c;
     }
 
+    [data-theme="light"] {
+      --bg: #f5f5f5;
+      --surface: #ffffff;
+      --surface-hover: #ebebeb;
+      --border: #e0e0e0;
+      --text: #0a0a0a;
+      --text-muted: #777;
+      --leo: #2563eb;
+      --raph: #dc2626;
+      --donnie: #7c3aed;
+      --mikey: #ea580c;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -61,6 +74,46 @@
       font-size: 10px;
       color: var(--text-muted);
       letter-spacing: 2px;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--text-muted);
+    }
+
+    .theme-icon {
+      width: 16px;
+      height: 16px;
+      background: var(--text);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    [data-theme="light"] .theme-icon {
+      background: transparent;
+      border: 2px solid var(--text);
+    }
+
+    [data-theme="light"] .theme-icon::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -4px;
+      width: 12px;
+      height: 12px;
+      background: var(--bg);
+      border-radius: 50%;
     }
 
     /* Section */
@@ -501,6 +554,9 @@
       <h1>PLAUD</h1>
       <span class="header-sub">NOTES</span>
     </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span class="theme-icon"></span>
+    </button>
   </header>
 
   <!-- Voice Notes Section -->
@@ -827,6 +883,25 @@ Hey, let's go through the week...`,
     document.getElementById('modal').addEventListener('click', (e) => {
       if (e.target.id === 'modal') closeModal();
     });
+
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
 
     renderBoard();
   </script>
