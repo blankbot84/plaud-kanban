@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>PLAUD</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
 
     :root {
       --bg: #0a0a0a;
@@ -43,11 +43,15 @@
     }
 
     body {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       padding-bottom: 80px;
+    }
+
+    .mono {
+      font-family: 'Space Mono', monospace;
     }
 
     /* Header */
@@ -64,6 +68,7 @@
     }
 
     .header h1 {
+      font-family: 'Space Mono', monospace;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 4px;
@@ -71,6 +76,7 @@
     }
 
     .header-sub {
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       color: var(--text-muted);
       letter-spacing: 2px;
@@ -147,6 +153,7 @@
     }
 
     .section-title {
+      font-family: 'Space Mono', monospace;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
@@ -155,6 +162,7 @@
     }
 
     .section-count {
+      font-family: 'Space Mono', monospace;
       font-size: 11px;
       color: var(--text-muted);
       margin-left: auto;
@@ -200,6 +208,7 @@
     }
 
     .column-title {
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
@@ -211,6 +220,7 @@
     }
 
     .column-count {
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       color: var(--text-muted);
     }
@@ -275,10 +285,10 @@
     }
 
     .card-title {
-      font-size: 12px;
-      font-weight: 400;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      line-height: 1.45;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -289,6 +299,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-family: 'Space Mono', monospace;
       font-size: 9px;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -297,7 +308,7 @@
 
     .card-tasks {
       background: var(--raph);
-      color: var(--bg);
+      color: white;
       padding: 2px 6px;
       font-size: 9px;
       font-weight: 700;
@@ -364,10 +375,10 @@
       background: none;
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 12px;
-      cursor: pointer;
-      padding: 8px 12px;
       font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      cursor: pointer;
+      padding: 8px 14px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -379,6 +390,7 @@
 
     .detail-type {
       display: inline-block;
+      font-family: 'Space Mono', monospace;
       font-size: 9px;
       padding: 4px 10px;
       text-transform: uppercase;
@@ -398,13 +410,14 @@
     }
 
     .detail-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
       line-height: 1.3;
     }
 
     .detail-date {
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -412,21 +425,22 @@
     }
 
     .detail-section {
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
     .detail-label {
+      font-family: 'Space Mono', monospace;
       font-size: 9px;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       letter-spacing: 2px;
       font-weight: 700;
     }
 
     .detail-content {
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.65;
     }
 
     .takeaway-list, .action-list {
@@ -434,10 +448,10 @@
     }
 
     .takeaway-list li {
-      padding: 8px 0;
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 12px;
-      line-height: 1.5;
+      font-size: 14px;
+      line-height: 1.55;
     }
 
     .takeaway-list li:last-child {
@@ -446,17 +460,17 @@
 
     .takeaway-list li::before {
       content: '—';
-      margin-right: 8px;
+      margin-right: 10px;
       color: var(--text-muted);
     }
 
     .action-list li {
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 12px;
+      font-size: 14px;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
 
     .action-list li:last-child {
@@ -464,14 +478,15 @@
     }
 
     .action-list input[type="checkbox"] {
-      margin-top: 2px;
+      margin-top: 3px;
       accent-color: var(--donnie);
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
 
     .action-text {
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .action-text.done {
@@ -482,19 +497,20 @@
     .transcript-box {
       background: var(--bg);
       border: 1px solid var(--border);
-      padding: 14px;
-      font-size: 12px;
+      padding: 16px;
+      font-size: 14px;
       line-height: 1.7;
-      max-height: 140px;
+      max-height: 160px;
       overflow-y: auto;
     }
 
     .transcript-time {
+      font-family: 'Space Mono', monospace;
       color: var(--leo);
       font-size: 10px;
       display: block;
-      margin-top: 12px;
-      margin-bottom: 4px;
+      margin-top: 14px;
+      margin-bottom: 6px;
       letter-spacing: 1px;
     }
 
@@ -504,18 +520,18 @@
 
     .move-buttons {
       display: flex;
-      gap: 8px;
-      margin-top: 24px;
+      gap: 10px;
+      margin-top: 28px;
     }
 
     .move-btn {
       flex: 1;
-      padding: 12px 8px;
+      padding: 14px 8px;
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text);
-      font-size: 10px;
       font-family: 'Space Mono', monospace;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
       cursor: pointer;
@@ -537,6 +553,7 @@
       text-align: center;
       padding: 20px;
       color: var(--text-muted);
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 2px;
