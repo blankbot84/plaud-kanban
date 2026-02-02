@@ -32,7 +32,7 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      overflow-x: auto;
+      padding-bottom: 80px;
     }
 
     /* Header */
@@ -56,69 +56,79 @@
       gap: 8px;
     }
 
-    .header-actions {
+    /* Section */
+    .section {
+      padding: 12px 0;
+    }
+
+    .section-header {
       display: flex;
+      align-items: center;
       gap: 8px;
+      padding: 8px 16px;
+      position: sticky;
+      top: 52px;
+      background: var(--bg);
+      z-index: 50;
     }
 
-    .filter-btn {
-      padding: 6px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
+    .section-icon {
+      font-size: 20px;
     }
 
-    .filter-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(88, 166, 255, 0.1);
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .filter-btn.voice.active {
-      border-color: var(--voice);
+    .section-title.voice {
       color: var(--voice);
-      background: rgba(168, 85, 247, 0.1);
     }
 
-    .filter-btn.meeting.active {
-      border-color: var(--meeting);
+    .section-title.meeting {
       color: var(--meeting);
-      background: rgba(34, 197, 94, 0.1);
+    }
+
+    .section-count {
+      background: var(--border);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
     /* Board */
     .board {
       display: flex;
-      gap: 12px;
-      padding: 16px;
-      min-height: calc(100vh - 60px);
+      gap: 10px;
+      padding: 0 12px 12px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
     .column {
-      flex: 0 0 300px;
+      flex: 0 0 260px;
       scroll-snap-align: start;
       background: var(--surface);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border);
+      min-height: 180px;
+      max-height: 300px;
       display: flex;
       flex-direction: column;
-      max-height: calc(100vh - 92px);
     }
 
     @media (max-width: 640px) {
       .column {
-        flex: 0 0 85vw;
+        flex: 0 0 75vw;
       }
     }
 
     .column-header {
-      padding: 12px 16px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -126,24 +136,25 @@
     }
 
     .column-title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      color: var(--text-muted);
     }
 
     .column-count {
       background: var(--border);
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 10px;
       color: var(--text-muted);
     }
 
     .column-indicator {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
     }
 
@@ -153,61 +164,41 @@
     .column.done .column-indicator { background: var(--done); }
 
     .column-cards {
-      padding: 12px;
+      padding: 8px;
       overflow-y: auto;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* Cards */
     .card {
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 6px;
+      padding: 10px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .card:hover {
       border-color: var(--accent);
-      transform: translateY(-1px);
     }
 
-    .card-type {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 8px;
+    .card.voice {
+      border-left: 3px solid var(--voice);
     }
 
-    .card-type.voice {
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--voice);
-    }
-
-    .card-type.meeting {
-      background: rgba(34, 197, 94, 0.15);
-      color: var(--meeting);
+    .card.meeting {
+      border-left: 3px solid var(--meeting);
     }
 
     .card-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       line-height: 1.3;
-    }
-
-    .card-synopsis {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 8px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -218,22 +209,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-muted);
     }
 
-    .card-actions {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .card-actions span {
+    .card-tasks {
       background: var(--action);
       color: white;
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 9px;
     }
 
     /* Add button */
@@ -254,6 +239,7 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.2s;
+      z-index: 100;
     }
 
     .add-btn:hover {
@@ -280,7 +266,7 @@
       border-radius: 16px 16px 0 0;
       width: 100%;
       max-width: 500px;
-      max-height: 90vh;
+      max-height: 85vh;
       overflow-y: auto;
       padding: 20px;
     }
@@ -303,6 +289,27 @@
       color: var(--text-muted);
       font-size: 24px;
       cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    .detail-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .detail-type.voice {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--voice);
+    }
+
+    .detail-type.meeting {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--meeting);
     }
 
     .detail-section {
@@ -327,7 +334,7 @@
     }
 
     .takeaway-list li, .action-list li {
-      padding: 8px 0;
+      padding: 6px 0;
       border-bottom: 1px solid var(--border);
       font-size: 13px;
     }
@@ -354,7 +361,7 @@
       padding: 12px;
       font-size: 13px;
       line-height: 1.6;
-      max-height: 200px;
+      max-height: 150px;
       overflow-y: auto;
     }
 
@@ -369,16 +376,18 @@
       display: flex;
       gap: 8px;
       margin-top: 16px;
+      flex-wrap: wrap;
     }
 
     .move-btn {
       flex: 1;
-      padding: 10px;
+      min-width: 70px;
+      padding: 10px 8px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -395,69 +404,103 @@
     /* Empty state */
     .empty-state {
       text-align: center;
-      padding: 24px;
+      padding: 16px;
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 12px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 16px;
     }
   </style>
 </head>
 <body>
   <header class="header">
     <h1>📝 Plaud Notes</h1>
-    <div class="header-actions">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn voice" data-filter="voice">🎤 Voice</button>
-      <button class="filter-btn meeting" data-filter="meeting">📅 Meeting</button>
-    </div>
   </header>
 
-  <div class="board">
-    <div class="column inbox" data-column="inbox">
-      <div class="column-header">
-        <span class="column-title">
-          <span class="column-indicator"></span>
-          Inbox
-        </span>
-        <span class="column-count">2</span>
+  <!-- Voice Notes Section -->
+  <section class="section" id="voice-section">
+    <div class="section-header">
+      <span class="section-icon">🎤</span>
+      <span class="section-title voice">Voice Notes</span>
+      <span class="section-count" id="voice-total">0</span>
+    </div>
+    <div class="board" id="voice-board">
+      <div class="column inbox" data-column="inbox" data-type="voice">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Inbox</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
       </div>
-      <div class="column-cards">
-        <!-- Cards populated by JS -->
+      <div class="column review" data-column="review" data-type="voice">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Reviewing</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
+      </div>
+      <div class="column action" data-column="action" data-type="voice">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Action</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
+      </div>
+      <div class="column done" data-column="done" data-type="voice">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Done</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
       </div>
     </div>
+  </section>
 
-    <div class="column review" data-column="review">
-      <div class="column-header">
-        <span class="column-title">
-          <span class="column-indicator"></span>
-          Reviewing
-        </span>
-        <span class="column-count">1</span>
-      </div>
-      <div class="column-cards"></div>
-    </div>
+  <div class="divider"></div>
 
-    <div class="column action" data-column="action">
-      <div class="column-header">
-        <span class="column-title">
-          <span class="column-indicator"></span>
-          Action
-        </span>
-        <span class="column-count">1</span>
-      </div>
-      <div class="column-cards"></div>
+  <!-- Meetings Section -->
+  <section class="section" id="meetings-section">
+    <div class="section-header">
+      <span class="section-icon">📅</span>
+      <span class="section-title meeting">Meetings</span>
+      <span class="section-count" id="meeting-total">0</span>
     </div>
-
-    <div class="column done" data-column="done">
-      <div class="column-header">
-        <span class="column-title">
-          <span class="column-indicator"></span>
-          Done
-        </span>
-        <span class="column-count">0</span>
+    <div class="board" id="meeting-board">
+      <div class="column inbox" data-column="inbox" data-type="meeting">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Inbox</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
       </div>
-      <div class="column-cards"></div>
+      <div class="column review" data-column="review" data-type="meeting">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Reviewing</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
+      </div>
+      <div class="column action" data-column="action" data-type="meeting">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Action</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
+      </div>
+      <div class="column done" data-column="done" data-type="meeting">
+        <div class="column-header">
+          <span class="column-title"><span class="column-indicator"></span> Done</span>
+          <span class="column-count">0</span>
+        </div>
+        <div class="column-cards"></div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <button class="add-btn">+</button>
 
@@ -467,9 +510,7 @@
         <span class="modal-title">Note Details</span>
         <button class="modal-close" onclick="closeModal()">×</button>
       </div>
-      <div id="modal-content">
-        <!-- Dynamic content -->
-      </div>
+      <div id="modal-content"></div>
     </div>
   </div>
 
@@ -491,15 +532,43 @@
           { text: 'Verify if the device records all words or only creates summaries', done: true }
         ],
         transcript: `<span class="transcript-time">00:00:28</span>
-So this is my new recording device that I'm using right now. And I'm trying to see if it's recording me. And, we'll see if it is recording anything that I'm saying because it's important that it records the words that I'm saying.
+So this is my new recording device that I'm using right now. And I'm trying to see if it's recording me.
 
 <span class="transcript-time">00:00:55</span>
-So it's not going to record every word, I guess. It's just going to record highlights about the things that I'm saying. Maybe it's recording every word. Maybe if I push the button, Then it highlights that point in time.`,
+So it's not going to record every word, I guess. It's just going to record highlights about the things that I'm saying.`,
         date: '2026-02-01',
         column: 'inbox'
       },
       {
         id: 2,
+        type: 'voice',
+        title: 'Quick idea: Dealership dashboard redesign',
+        synopsis: 'Thoughts on simplifying the main dashboard view for dealership managers.',
+        takeaways: [
+          'Current dashboard is too cluttered',
+          'Need KPI widgets front and center',
+          'Mobile view needs complete rethink'
+        ],
+        actions: [],
+        transcript: `<span class="transcript-time">00:00:05</span>
+Just had a thought about the dashboard...`,
+        date: '2026-01-31',
+        column: 'review'
+      },
+      {
+        id: 3,
+        type: 'voice',
+        title: 'Reminder: Call Brad about data export',
+        synopsis: 'Need to follow up with Brad on the GA4 data format.',
+        takeaways: ['Brad prefers CSV over JSON', 'Weekly exports on Mondays'],
+        actions: [{ text: 'Schedule call with Brad', done: false }],
+        transcript: `<span class="transcript-time">00:00:02</span>
+Don't forget to call Brad...`,
+        date: '2026-02-02',
+        column: 'action'
+      },
+      {
+        id: 4,
         type: 'meeting',
         title: 'Sam Boswell Q1 Planning Discussion',
         synopsis: 'Quarterly planning meeting with O\'Neil and Brad to discuss marketing strategy and GA4 integration timeline.',
@@ -519,23 +588,7 @@ Alright, so let's talk about Q1 priorities for Sam Boswell...`,
         column: 'inbox'
       },
       {
-        id: 3,
-        type: 'voice',
-        title: 'Quick idea: Dealership dashboard redesign',
-        synopsis: 'Thoughts on simplifying the main dashboard view for dealership managers.',
-        takeaways: [
-          'Current dashboard is too cluttered',
-          'Need KPI widgets front and center',
-          'Mobile view needs complete rethink'
-        ],
-        actions: [],
-        transcript: `<span class="transcript-time">00:00:05</span>
-Just had a thought about the dashboard...`,
-        date: '2026-01-31',
-        column: 'review'
-      },
-      {
-        id: 4,
+        id: 5,
         type: 'meeting',
         title: 'Vendor call with Analytics provider',
         synopsis: 'Discussion about API limits and pricing tiers for scaled usage.',
@@ -552,48 +605,62 @@ Just had a thought about the dashboard...`,
 Thanks for hopping on this call...`,
         date: '2026-01-30',
         column: 'action'
+      },
+      {
+        id: 6,
+        type: 'meeting',
+        title: 'Shawn sync: Next Automotive roadmap',
+        synopsis: 'Weekly sync with Shawn on consulting pipeline and deliverables.',
+        takeaways: [
+          'Two new leads in pipeline',
+          'Sam Boswell expansion on track',
+          'Need to hire contractor for frontend'
+        ],
+        actions: [
+          { text: 'Review contractor candidates', done: true },
+          { text: 'Prep deck for new lead pitch', done: false }
+        ],
+        transcript: `<span class="transcript-time">00:00:15</span>
+Hey, let's go through the week...`,
+        date: '2026-01-29',
+        column: 'review'
       }
     ];
 
-    let currentFilter = 'all';
     let selectedNote = null;
 
     function renderBoard() {
+      const types = ['voice', 'meeting'];
       const columns = ['inbox', 'review', 'action', 'done'];
       
-      columns.forEach(col => {
-        const container = document.querySelector(`[data-column="${col}"] .column-cards`);
-        const colNotes = notes.filter(n => {
-          const matchesColumn = n.column === col;
-          const matchesFilter = currentFilter === 'all' || n.type === currentFilter;
-          return matchesColumn && matchesFilter;
-        });
+      types.forEach(type => {
+        const typeNotes = notes.filter(n => n.type === type);
+        document.getElementById(`${type}-total`).textContent = typeNotes.length;
 
-        // Update count
-        document.querySelector(`[data-column="${col}"] .column-count`).textContent = colNotes.length;
+        columns.forEach(col => {
+          const container = document.querySelector(`[data-column="${col}"][data-type="${type}"] .column-cards`);
+          const colNotes = typeNotes.filter(n => n.column === col);
 
-        if (colNotes.length === 0) {
-          container.innerHTML = '<div class="empty-state">No notes</div>';
-          return;
-        }
+          // Update count
+          document.querySelector(`[data-column="${col}"][data-type="${type}"] .column-count`).textContent = colNotes.length;
 
-        container.innerHTML = colNotes.map(note => `
-          <div class="card" onclick="openNote(${note.id})">
-            <span class="card-type ${note.type}">
-              ${note.type === 'voice' ? '🎤 Voice Note' : '📅 Meeting'}
-            </span>
-            <div class="card-title">${note.title}</div>
-            <div class="card-synopsis">${note.synopsis}</div>
-            <div class="card-meta">
-              <span>${note.date}</span>
-              ${note.actions.length > 0 ? `
-                <div class="card-actions">
-                  <span>${note.actions.filter(a => !a.done).length} tasks</span>
-                </div>
-              ` : ''}
+          if (colNotes.length === 0) {
+            container.innerHTML = '<div class="empty-state">No notes</div>';
+            return;
+          }
+
+          container.innerHTML = colNotes.map(note => `
+            <div class="card ${note.type}" onclick="openNote(${note.id})">
+              <div class="card-title">${note.title}</div>
+              <div class="card-meta">
+                <span>${note.date}</span>
+                ${note.actions.filter(a => !a.done).length > 0 ? `
+                  <span class="card-tasks">${note.actions.filter(a => !a.done).length}</span>
+                ` : ''}
+              </div>
             </div>
-          </div>
-        `).join('');
+          `).join('');
+        });
       });
     }
 
@@ -604,7 +671,7 @@ Thanks for hopping on this call...`,
       const content = document.getElementById('modal-content');
       content.innerHTML = `
         <div class="detail-section">
-          <span class="card-type ${selectedNote.type}">
+          <span class="detail-type ${selectedNote.type}">
             ${selectedNote.type === 'voice' ? '🎤 Voice Note' : '📅 Meeting'}
           </span>
           <h2 style="margin-top: 8px; font-size: 16px;">${selectedNote.title}</h2>
@@ -645,8 +712,8 @@ Thanks for hopping on this call...`,
         </div>
 
         <div class="move-buttons">
-          ${selectedNote.column !== 'inbox' ? '<button class="move-btn" onclick="moveNote(\'inbox\')">← Inbox</button>' : ''}
-          ${selectedNote.column !== 'review' ? '<button class="move-btn" onclick="moveNote(\'review\')">Reviewing</button>' : ''}
+          ${selectedNote.column !== 'inbox' ? '<button class="move-btn" onclick="moveNote(\'inbox\')">Inbox</button>' : ''}
+          ${selectedNote.column !== 'review' ? '<button class="move-btn" onclick="moveNote(\'review\')">Review</button>' : ''}
           ${selectedNote.column !== 'action' ? '<button class="move-btn" onclick="moveNote(\'action\')">Action</button>' : ''}
           ${selectedNote.column !== 'done' ? '<button class="move-btn primary" onclick="moveNote(\'done\')">Done ✓</button>' : ''}
         </div>
@@ -673,19 +740,9 @@ Thanks for hopping on this call...`,
       if (note) {
         note.actions[actionIndex].done = !note.actions[actionIndex].done;
         renderBoard();
-        openNote(noteId); // Refresh modal
+        openNote(noteId);
       }
     }
-
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderBoard();
-      });
-    });
 
     // Close modal on overlay click
     document.getElementById('modal').addEventListener('click', (e) => {
